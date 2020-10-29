@@ -20,8 +20,8 @@ docker-compose up -d
 * Spring Boot 2.3.4
 * Postgresql
 * Swagger
-* Content Negotiation Support(xml,json,yaml support)
-* Spring Boot Web(Pagination Support)
+* Content Negotiation Support(Xml,Json,Yaml Support)
+* Spring Boot Web(Pagination Support,Rsql Support)
 * Spring Boot Security
 * Spring Boot Validation
 * Spring Boot Jpa(Audit Support)

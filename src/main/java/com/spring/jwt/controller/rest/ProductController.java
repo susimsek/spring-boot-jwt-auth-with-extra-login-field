@@ -44,8 +44,8 @@ public class ProductController {
     @ApiOperation(value = "List Product", response = Iterable.class )
     @GetMapping("/products")
     @ResponseStatus(HttpStatus.OK)
-    public Page<Product> listProduct(Pageable page) {
-        return productService.listProduct(page);
+    public Page<Product> listProduct(@RequestParam(required = false,value = "search") String search,Pageable page) {
+            return productService.listProduct(search,page);
     }
 
 }

@@ -32,7 +32,6 @@ public class Product extends UserDateAudit {
     @Size(max = 100)
     String name;
 
-    @JsonIgnore
     @NotBlank
     @Size(max = 120)
     String price;

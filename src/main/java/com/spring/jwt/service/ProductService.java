@@ -10,5 +10,6 @@ public interface ProductService {
 
     Product createProduct(ProductCreateRequest productCreateRequest);
     void deleteProduct(String id);
-    Page<Product> listProduct(Pageable page);
+    Page<Product> listProduct(String search,Pageable page);
+
 }
