@@ -4,6 +4,7 @@ package com.spring.jwt.config;
 import com.spring.jwt.security.UserDetailsImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Pageable;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -37,7 +38,8 @@ public class JwtAuhSwaggerConfig {
                 .globalRequestParameters(parameters())
                 .ignoredParameterTypes(UserDetailsImpl.class)
                 .securitySchemes(Arrays.asList(securityScheme()))
-                .securityContexts(List.of(securityContext()));
+                .securityContexts(List.of(securityContext()))
+                .directModelSubstitute(Pageable.class,SwaggerPageable.class);
     }
 
     private ApiInfo metaData() {

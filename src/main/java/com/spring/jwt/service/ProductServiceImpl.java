@@ -9,7 +9,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
@@ -35,5 +38,10 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProduct(String id) {
         Product product = productRepository.findById(id).orElseThrow(() -> new ProviderNotFoundException());
         productRepository.delete(product);
+    }
+
+    @Override
+    public Page<Product> listProduct(Pageable page) {
+        return productRepository.findAll(page);
     }
 }

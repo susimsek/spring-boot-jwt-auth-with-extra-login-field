@@ -5,10 +5,14 @@ import com.spring.jwt.model.Product;
 import com.spring.jwt.payload.request.ProductCreateRequest;
 import com.spring.jwt.service.ProductService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,4 +39,13 @@ public class ProductController {
     public void deleteProduct(@NotBlank @PathVariable String id) {
         productService.deleteProduct(id);
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @ApiOperation(value = "List Product", response = Iterable.class )
+    @GetMapping("/products")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<Product> listProduct(Pageable page) {
+        return productService.listProduct(page);
+    }
+
 }
